@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios"
 import Coin from "./components/Coin"
+import Navbar from "./components/Navbar";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
  
   return (
     <div className="App">
+      <Navbar />
      <Coin coins={coins}/>
     </div>
   );
