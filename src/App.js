@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios"
+import Coin from "./components/Coin"
 
 function App() {
+
   const [coins,setCoins]=useState("");
-  const url='';
-  useEffect(()=>{
+  const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false'
 
-    axios.get(url).then((res)=>{
-      setCoins(res.data)
-      console.log(res.data[0])
-
-    }).catch((error)=>{
+  useEffect(() => {
+    axios.get(url).then((response) => {
+    
+      setCoins(response.data)
+     
+    }).catch((error) => {
       console.log(error)
     })
-    
-  },[])
-
+  }, [])
+ 
   return (
     <div className="App">
-     <p>Crypto App</p>
+     <Coin coins={coins}/>
     </div>
   );
 }
